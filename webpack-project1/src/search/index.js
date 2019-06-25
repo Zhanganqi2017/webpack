@@ -7,10 +7,24 @@ import './search.less';
 import picture from './image/haiys60.jpg'
 
 class Search extends React.Component {
-
+    constructor() {
+        super(...arguments);
+        this.state = {
+            Text: null
+        }
+    }
+    loadComponnet() {
+        import ('./text.js').then((Text) => {
+            this.setState({
+                Text: Text.default
+            });
+        });
+    }
     render() {
+        const { Text } = this.state;
         const funcA = a();
-        return <div className = "search-text" > < img src = { picture }
+        return <div className = "search-text" > { Text ? < Text / > : null } < img src = { picture }
+        onClick = { this.loadComponnet.bind(this) }
         />{funcA}搜索文字的内容hello < /div > ;
     }
 }
