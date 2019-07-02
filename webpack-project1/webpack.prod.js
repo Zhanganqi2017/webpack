@@ -49,7 +49,8 @@ module.exports = {
     module: {
         rules: [{
             test: /.js$/,
-            use: "babel-loader"
+            use: ["babel-loader"]
+                //use: ["babel-loader", 'eslint-loader']
         }, {
             test: /\.css$/,
             use: [MiniCssExtractPlugin.loader, "css-loader"] // 先写 style-loader，后写 css-loader
