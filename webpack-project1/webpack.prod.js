@@ -3,6 +3,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
@@ -101,6 +102,7 @@ module.exports = {
             cssProcessor: require('cssnano')
         }),
         new CleanWebpackPlugin(),
+        new FriendlyErrorsWebpackPlugin()
         // new webpack.optimize.ModuleConcatenationPlugin()
     ].concat(htmlWebpackPlugin),
     optimization: {
@@ -114,5 +116,6 @@ module.exports = {
                 }
             }
         }
-    }
+    },
+    stats: "errors-only"
 }
